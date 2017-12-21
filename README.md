@@ -4,7 +4,8 @@ target pixel files. To use this version of the astrometry.net API and determine 
 simplejson in your python path, as well as version 2 of the Kepler PyKEtools (https://keplergo.arc.nasa.gov/PyKE.shtml).
 
 Follow these steps to reproduce the superstamp fits files that we have released at the MAST archive at
-archive.stsci.edu/prepds/k2superstamp/
+https://archive.stsci.edu/prepds/k2superstamp/
+Some example files are provided for you to see the output and text lists.
 
 0.) Pick a superstamp for which you want fits files.
 

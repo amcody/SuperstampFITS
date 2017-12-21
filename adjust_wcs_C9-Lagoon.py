@@ -13,8 +13,7 @@ from astropy.io import fits
 
 def main():
 
-# files = glob.glob("Images_wcs/*wcs.fits")
- files = np.loadtxt("Images_wcs/filenames2.txt",dtype='str') 
+ files = np.loadtxt("filenames_M8_wcs.txt",dtype='str') 
 
  for infile in files:
    print infile
@@ -44,14 +43,6 @@ def main():
 
 ## Guess at flux:
      fluxguess = str(pixels[int(rows),int(columns)])
-
-# Example with the old kepprf:
-#   kepler.kepprf('ktwo200071162-c91_lpd-targ.fits',rownum=1,columns=1029,rows=933,fluxes=14000.,border=0,background='yes',prfdir='/Users/acody/Data/Kepler')
-
-# With plots -->
-#     result = kepprf_AMC.kepprf_AMC(infile,'testplot.png','1',columns,rows,fluxguess,border=1,background='yes',focus='no', \
-#       prfdir='/Users/acody/Data/Kepler',xtol=0.0001,ftol=0.01,imscale='linear',colmap='RdYlBu',labcol='#ffffff',apercol='#ffffff',plt=True, \
-#       verbose=False,logfile='kepprf.log')
 
      result = kepprf_AMC.kepprf_AMC(infile,'1',columns,rows,fluxguess,border=1,background='yes',focus='no', \
        prfdir='/Users/acody/Data/Kepler',xtol=0.0001,ftol=0.01,verbose=False,logfile='kepprf.log')

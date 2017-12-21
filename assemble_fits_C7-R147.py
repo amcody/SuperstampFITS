@@ -8,9 +8,9 @@ import glob
 
 def main():
 
-    prefix='M35'
+    prefix='R147'
 
-    filenames = glob.glob('/Volumes/Work/Field_0/M35/TPFs/ktwo200*targ.fits')
+    filenames = glob.glob('/Volumes/Work/Field_7/Ruprecht147/TPFs/ktwo200*targ.fits')
 
     midfile = fits.open(filenames[0],mode='readonly',memmap=True)
     cards0 = midfile[0].header.cards
@@ -25,11 +25,11 @@ def main():
     pos_corr1 = midfile[1].data.field('POS_CORR1')[:]
     pos_corr2 = midfile[1].data.field('POS_CORR2')[:]
 
-    bigarr = np.zeros([800,550])
+    bigarr = np.zeros([408,408])
     bigarr[:] = np.nan
     bigarr = bigarr.astype('float32')
 
-    for i in range(0,3753):
+    for i in range(0,4043):
 
 # only continue if there is valid data at this timestamp
      if (~np.isnan(time[i]) and len(np.where((midfile[1].data['FLUX'])[i] != 0.0)[0]) != 0 and len(np.where((~np.isnan(midfile[1].data['FLUX'])[i]))[0]) != 0):
@@ -47,7 +47,7 @@ def main():
                out = f[0].header['OUTPUT']
                alldata = f[1].data['FLUX']
 
-               bigarr[y-20:y+30,x-12:x+38] = alldata[i]
+               bigarr[y-442:y-391,x-173:x-122] = alldata[i]
 
        hdu0 = fits.PrimaryHDU(bigarr)
 
@@ -136,7 +136,7 @@ def main():
        hdu0.header['DATE'] = str(datetime.date.today())
        hdu0.header['CREATOR'] = 'Ann Marie Cody'
        hdu0.header.cards['CREATOR'].comment = 'file creator'
-       hdu0.header.set('OBJECT','M35','target')
+       hdu0.header.set('OBJECT','Ruprecht 147','target')
 
        hdu0.header.remove('PCOUNT')
        hdu0.header.remove('GCOUNT')
@@ -187,7 +187,7 @@ def main():
        hdu0.header.remove('FLFRCSAP')
 #       hdu0.header.set('NEXTEND', 1, 'number of extensions')
 
-       hdu0.header.set('OBJECT','M35','target')
+       hdu0.header.set('OBJECT','Ruprecht 147','target')
        hdu0.header['TSTART'] = time[i] - frametim/3600./24./2. * num_frm
        hdu0.header['TSTOP'] = time[i] + frametim/3600./24./2. * num_frm
        hdu0.header.cards['TSTART'].comment = 'observation start time in BJD'

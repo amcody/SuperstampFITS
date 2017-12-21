@@ -2,7 +2,7 @@ import os
 import myclient
 import time
 
-files = open('filenames14e.txt', 'r')
+files = open('filenames_M8.txt', 'r')
 for line in files:
     line = line.strip()
     end = line.find('.fits')
@@ -10,7 +10,9 @@ for line in files:
     print line
 
     cli = myclient.MyClient()
-    cli.login('aqziogisjluxikqk')
+
+### Put your API key below in places of xxxxxxx
+    cli.login('xxxxxxxxxxxxxx')
 
     #Set some solving options
     opts=dict()

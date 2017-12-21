@@ -1,19 +1,16 @@
-import anetclient
+import client
 import urllib2
 import simplejson
 import re
 import shelve
 import pyfits
 
-__version__ = "$Id: myclient.py 17 2013-11-05 19:26:14Z fergalm $"
-__URL__ = "$URL: svn+ssh://fergalm@svn.code.sf.net/p/keplertwowheel/code/astrom/myclient.py $"
-
-apiKey="aqziogisjluxikqk"
-myDebugSession='40c907a202bccd4bb0aa2867ff079499'
+## Put your API key here:
+apiKey="xxxxxxxxxxxxxxxxx"
 
 
 
-class MyClient(anetclient.Client):
+class MyClient(client.Client):
     def __init__(self, apiurl=None):
         """A interface to the Astrometry.net SOAP protocol
 
@@ -28,9 +25,9 @@ class MyClient(anetclient.Client):
         """
 
         if apiurl is None:
-            apiurl = anetclient.Client.default_url
+            apiurl = client.Client.default_url
 
-        anetclient.Client.__init__(self, apiurl)
+        client.Client.__init__(self, apiurl)
         self.submittedJobs = dict()
         self.jobStatus = dict()
 
@@ -48,7 +45,7 @@ class MyClient(anetclient.Client):
         Returns:
         Id number of this submission. Use this id to track a submission
         """
-        ret = anetclient.Client.upload(self, fn, **kwargs)
+        ret = client.Client.upload(self, fn, **kwargs)
 
         subId = ret['subid']
         #subId = 1

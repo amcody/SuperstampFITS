@@ -1,0 +1,2 @@
+M8_BJD2457501.0963_wcs.fits
+M8_BJD2457501.1167_wcs.fits
